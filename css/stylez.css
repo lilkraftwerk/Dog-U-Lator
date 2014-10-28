@@ -1,0 +1,84 @@
+#title {
+  font-size: 3em;
+  text-align: center;
+  /*border: 1px solid black;*/
+  font-family: 'Pacifico', cursive;
+  color: black;
+  text-shadow: 2px 2px pink;
+}
+
+#subtitle {
+  margin-top: 7px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-style: italic;
+  font-size: 2em;
+}
+
+.calculator {
+  border: 2px solid black;
+}
+
+html, body {
+font-family: 'Raleway', sans-serif;
+}
+
+#submit {
+margin-bottom: 30px;
+border: 2px solid black;
+}
+
+#resultsrow {
+  display: none;
+}
+
+#result {
+  margin-top: 30px;
+  height: 500px;
+  border: 1px solid black;
+  margin-bottom: 400px;
+  padding: 0% 10%;
+}
+
+.score {
+  float: right;
+}
+
+.base {
+  font-size: 1.5em;
+}
+
+.scoreline {
+  padding: 3px;
+  margin-bottom: 3px;
+}
+
+.positive {
+  background-color: #87D37C;
+}
+
+.negative {
+  background-color: #F22613;
+}
+
+#result hr {
+  margin-left: 25%;
+  width: 50%;
+  border-top: 1px solid black;
+}
+
+#result ul {
+    list-style-type: none;
+}
+
+#loadingimg {
+  margin: 50px auto;
+}
+
+#hiddendog {
+  display: none;
+}
