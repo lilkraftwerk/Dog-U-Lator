@@ -43,35 +43,43 @@ var pointValues = {
 
 function getBonuses(){
   var theseValues = getValues()
-  var lineItems = []
-  for (var value in theseValues){
-    lineItems.push(formatPointOutput(pointValues[value]))
+  var bonusObjects = []
+  for (value in theseValues){
+    var thisPointObject = formatPointObject(value)
+    bonusObjects.push(thisPointObject)
   }
-  lineItems = formatLineItemsToListItems(lineItems)
-  console.log(lineItems)
-  return lineItems.join("")
+  return bonusObjects
 }
 
-function formatLineItemsToListItems(items){
-  for(i = 0; i < items.length; i++){
-      var thisItem = items[i]
-      items[i] = "<li>" + thisItem + "</li>"
+function formatPointObject(value){
+  var thisObject = {
+  name: value,
+  score: pointValues[value][0],
+  description: pointValues[value][1],
+  positive: scoreIsPositive(pointValues[value][0])
   }
-  console.log(items)
-  return items
+  return thisObject
 }
 
-function formatPointOutput(valueArray){
-  if (valueArray[0] < 0){
-    return valueArray[1] + ": " + valueArray[0]
-  } else if (valueArray[0] > 0){
-    return valueArray[1] + ": +" + valueArray[0]
+function scoreIsPositive(score){
+  if (score > 0){
+    return "positive"
+  } else if (score < 0){
+    return "negative"
   }
 }
 
-function updateResult(items){
-  var joined = items.join("")
-  $("#result").text(joined)
+function createScoreDiv(scoreObj){
+  return "<div class='scoreline " + scoreObj.positive + "'>" + scoreObj.description +
+  "<span class='score'>" + returnPlusOrMinus(scoreObj) + scoreObj.score + "</span></div>"
+}
+
+function returnPlusOrMinus(scoreObj){
+  if (scoreObj.positive == "positive") {
+    return "+"
+  } else if (scoreObj.positive == "negative") {
+    return ""
+  }
 }
 
 function getBaseScore(){
@@ -86,6 +94,12 @@ function getCaveats(){
 }
 
 function formatResult(){
-  var result = "<h1>Your Score</h1>" + getBaseScore() + "</ul><h3>Bonuses</h3><ul>" + getBonuses() + "</ul>"
-  $("#result").html(result)
+  var results = []
+  var bonuses = getBonuses()
+  for (i = 0; i < bonuses.length; i++){
+    results.push(createScoreDiv(bonuses[i]))
+  }
+  console.log(results)
+  // var result = "<h1>Your Score</h1>" + getBaseScore() + "</ul><h3>Bonuses</h3><ul>" + getBonuses() + "</ul>"
+  $("#result").html(results.join(""))
 }
