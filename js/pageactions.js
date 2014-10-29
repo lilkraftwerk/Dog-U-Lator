@@ -1,14 +1,21 @@
 $(document).ready(function() {
   $("#submit").on('click', function(e){
     e.preventDefault()
-    $("#resultsrow").show()
-    scrollToResults()
-    loadingScreen()
-    setTimeout(function (){
+    submitHit()
+  })
 
-             formatResult()
+  $("#dogquantitypicker").children('button').on('click', function(e){
+    e.preventDefault()
+    addOrSubtract($(this), $(this).attr('data-type'))
+  })
 
-         }, 2500)
+  $("#multispotpicker").children('button').on('click', function(e){
+    e.preventDefault()
+    addOrSubtract($(this), $(this).attr('data-type'))
+  })
+
+  $("#morethan10").on('click', function(e){
+    showMoreField()
   })
 });
 
@@ -17,6 +24,21 @@ function randomLoadingMessage(){
   var messageNumber = Math.floor((Math.random() * (messages.length - 1)) + 1);
   return messages[messageNumber]
   }
+
+function addOrSubtract(button, operation){
+  value = parseInt(button.siblings('input').val())
+  console.log(value)
+  if (operation == "add"){
+    button.siblings('input').val(value + 1)}
+     else if (operation == "subtract"){
+      if (value <= 1){
+        button.siblings('input').val(1)
+      } else {
+        button.siblings('input').val(value - 1)
+      }
+
+  }
+}
 
 
 function loadingScreen(){
@@ -31,3 +53,18 @@ function scrollToResults (){
         scrollTop: $("#result").offset().top -100
     }, 1000);
 }
+
+function submitHit(){
+  $("#resultsrow").show()
+    scrollToResults()
+    loadingScreen()
+    setTimeout(function (){
+             displayAllPoints()
+         }, 2500)
+}
+
+function showMoreField(){
+  $( "#moredogform" ).fadeIn("slow", function() {
+  });
+}
+

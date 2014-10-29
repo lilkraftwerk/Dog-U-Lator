@@ -8,7 +8,7 @@ var pointValues = {
   shamefulAppearance:
     [-2, "Shameful Appearance"],
   caligula:
-    [-3, "Shameful Appearance (Caligula Spot)"],
+    [-3, "Caligula Spot"],
   reverseSpot:
     [0, "Reverse Spot"],
   jackOfSpades:
@@ -22,11 +22,11 @@ var pointValues = {
   extremeLounging:
     [1, "Extreme Lounging"],
   tooClose:
-    [-1, "Distance (Too Close)"],
+    [-1, "Too Close"],
   goodDistance:
-    [1, "Distance (Good Distance)"],
+    [1, "Good Distance"],
   extremeDistance:
-    [2, "Distance (Extreme Distance!)"],
+    [2, "Extreme Distance!"],
   actionDog:
     [1, "Action Dog"],
   curiousEater:
@@ -82,24 +82,50 @@ function returnPlusOrMinus(scoreObj){
   }
 }
 
+function pluralDogs(numOfDogs){
+  if (parseInt(numOfDogs) == 1){
+    return "dog"
+  } else {
+    return "dogs"
+  }
+}
+
 function getBaseScore(){
-  var numOfDogs = $("#numberOfDogs").val()
-  var toReturn = "<h3>Base Score</h3><p class='positive scoreline'>" + numOfDogs + " dogs" + "<span class='score'>+" + numOfDogs + "</span></p>"
+  var numOfDogs = $("#dogval").val()
+  var toReturn = "<h3>Base Score</h3><p class='positive scoreline'>" + numOfDogs + " " + pluralDogs(numOfDogs) + "<span class='score'>+" + numOfDogs + "</span></p>"
   console.log(toReturn)
   return toReturn
 }
 
-function getCaveats(){
-
+function getSubtotal(){
+  var bonusObjects = getBonuses()
+  var allScores = [parseInt($("#numberOfDogs").val())]
+  for(i = 0; i < bonusObjects.length; i++){
+    allScores.push(bonusObjects[i].score)
+  }
+  var subtotal = 0
+  for(i = 0; i < allScores.length; i++){
+    subtotal += allScores[i]
+  }
+  return subtotal
 }
 
-function formatResult(){
-  var results = []
+function formatSubtotal(){
+  return "<hr><h3>Subtotal</h3><div class='subtotal'>" + String(getSubtotal()) + "</div>"
+}
+
+function formatAllBonuses(){
+  var results = ["<h3>Bonuses</h3>"]
   var bonuses = getBonuses()
   for (i = 0; i < bonuses.length; i++){
     results.push(createScoreDiv(bonuses[i]))
   }
-  console.log(results)
-  // var result = "<h1>Your Score</h1>" + getBaseScore() + "</ul><h3>Bonuses</h3><ul>" + getBonuses() + "</ul>"
-  $("#result").html(results.join(""))
+  return results
+}
+
+// base score + bonuses = subtotal * multispot = total (then list caveats)
+
+function displayAllPoints(){
+  var allPointsDisplay = [getBaseScore(), formatAllBonuses(), formatSubtotal()]
+  $("#result").html(allPointsDisplay.join(""))
 }
