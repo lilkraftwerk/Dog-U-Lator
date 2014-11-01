@@ -3,17 +3,14 @@ $(document).ready(function() {
     e.preventDefault()
     submitHit()
   })
-
   $("#dogquantitypicker").children('button').on('click', function(e){
     e.preventDefault()
     addOrSubtract($(this), $(this).attr('data-type'))
   })
-
   $("#multispotpicker").children('button').on('click', function(e){
     e.preventDefault()
     addOrSubtract($(this), $(this).attr('data-type'))
   })
-
   $("#morethan10").on('click', function(e){
     showMoreField()
   })
@@ -27,7 +24,6 @@ function randomLoadingMessage(){
 
 function addOrSubtract(button, operation){
   value = parseInt(button.siblings('input').val())
-  console.log(value)
   if (operation == "add"){
     button.siblings('input').val(value + 1)}
      else if (operation == "subtract"){
@@ -36,7 +32,6 @@ function addOrSubtract(button, operation){
       } else {
         button.siblings('input').val(value - 1)
       }
-
   }
 }
 

@@ -4,7 +4,7 @@
   /*border: 1px solid black;*/
   font-family: 'Pacifico', cursive;
   color: black;
-  text-shadow: 2px 2px pink;
+  text-shadow: 2px 2px #4ECDC4;
 }
 
 #subtitle {
@@ -15,12 +15,11 @@
 
 h1 {
   text-align: center;
-  font-style: italic;
   font-size: 2em;
 }
 
 .calculator {
-  padding: 40px;
+  padding-bottom: 40px;
   background-color: white;
 }
 
@@ -28,9 +27,6 @@ h1 {
   display:none;
 }
 
-button:active {
-  background-color: pink;
-}
 
 
 .btn-group {
@@ -38,42 +34,80 @@ button:active {
 }
 
 .dogNumPicker {
-  height: 40px;
+  position: relative;
+  width: 100%;
 }
 
 .pickerlabel {
   text-align: center;
 }
 
+.titlebox {
+
+}
+
+label {
+  font-size: 1em;
+}
+
 .dogNumPicker input {
   font-size: 2em;
-  margin-left: 5px;
   text-align: center;
-  width: 55%;
   height: 55px;
+  margin-left: 20%;
+  border: 2px solid #226fbe;
+  box-shadow: 0 4px #A2DED0;
+  width: 60%;
+  margin-bottom: 10px;
+  outline: none;
   vertical-align: middle;
+  background-color: #FDE3A7;
 }
 
 .dogNumPicker button {
-  border: 0px solid white;
-  padding: none;
-  margin: none;
-
+  text-transform: uppercase;
+  border: 2px solid black;
+  padding: 5px 20px;
+  width: 20%;
+  border-radius: 5px;
+  outline: none;
   font-size: 1.5em;
-  width: 10%;
-  margin: 0px 5%;
   line-height: 1.5em;
-  background-color: pink;
+  position: relative;
+  background-color: #4ECDC4;
+  box-shadow: 0 4px #A2DED0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
-.dogNumPicker button:active {
-  background-color: green;
+button:hover {
+  top: 2px;
+  box-shadow: 0 2px #A2DED0;
 }
+
+button:active {
+  background-color: red;
+  border: 10px solid black;
+}
+
+.dogNumPicker button.left {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.dogNumPicker button.right {
+  margin-right: 20%;
+}
+
+
 
 
 html, body {
 font-family: 'Raleway', sans-serif;
-background-color: black;
+  background-image: url('../img/doglogo.png');
+  background-color: white;
+
 }
 
 #submit {
@@ -88,10 +122,9 @@ border: 2px solid black;
 #result {
   background-color: white;
   margin-top: 30px;
-  height: 500px;
   border: 1px solid black;
   margin-bottom: 400px;
-  padding: 0% 10%;
+  padding: 10px 10%;
 }
 
 .score {
@@ -105,8 +138,7 @@ border: 2px solid black;
 .scoreline {
   padding: 3px 12px;
   margin-bottom: 3px;
-  background-color: red;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .positive {
@@ -118,13 +150,13 @@ border: 2px solid black;
 }
 
 #result hr {
-  margin-left: 25%;
-  width: 50%;
+  margin-left: 35%;
+  width: 30%;
   border-top: 1px solid black;
 }
 
 .subtotal {
-
+  background-color: #DADFE1;
 }
 
 #result ul {

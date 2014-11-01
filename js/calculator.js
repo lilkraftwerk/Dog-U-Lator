@@ -9,10 +9,6 @@ var pointValues = {
     [-2, "Shameful Appearance"],
   caligula:
     [-3, "Caligula Spot"],
-  reverseSpot:
-    [0, "Reverse Spot"],
-  jackOfSpades:
-    [0, "The Illustrious Jack Of Spades"],
   criminalBehavior:
     [1, "Criminal Behavior"],
   destroyingProperty:
@@ -38,17 +34,31 @@ var pointValues = {
   heroDog:
     [25, "Hero Dog"],
   honorDog:
-    [25, "Honored Dog"]
+    [25, "Honored Dog"],
 }
 
 function getBonuses(){
   var theseValues = getValues()
   var bonusObjects = []
+   if (getCreativeBonus() != undefined){
+      var creativeBonus = formatCreativeBonusObject()
+      bonusObjects.push(creativeBonus)
+  }
   for (value in theseValues){
     var thisPointObject = formatPointObject(value)
     bonusObjects.push(thisPointObject)
   }
   return bonusObjects
+}
+
+function formatCreativeBonusObject(){
+  var thisObject = {
+  name: 'creativeBonus',
+  score: 1,
+  description: "Creative Bonus: " + getCreativeBonus(),
+  positive: "positive"
+  }
+  return thisObject
 }
 
 function formatPointObject(value){
@@ -93,13 +103,26 @@ function pluralDogs(numOfDogs){
 function getBaseScore(){
   var numOfDogs = $("#dogval").val()
   var toReturn = "<h3>Base Score</h3><p class='positive scoreline'>" + numOfDogs + " " + pluralDogs(numOfDogs) + "<span class='score'>+" + numOfDogs + "</span></p>"
-  console.log(toReturn)
   return toReturn
+}
+
+
+function formatMultispot(){
+  var multispot = $("#multival").val()
+  var subtotal = getSubtotal()
+  var multival = $("#multival").val()
+  var uneligibleDogs = $("#dogval").val() - multival
+  var subtotalMinusUneligibleDogs = subtotal - uneligibleDogs
+  if(multispot == 0){
+    return ""
+  } else {
+  return "<p class='subtotal scoreline'>Multispot Multiplier<br>" + subtotal + " (subtotal of eligible dogs:" + subtotalMinusUneligibleDogs + "<span class='score'>x " + multispot + "</span></p>"
+  }
 }
 
 function getSubtotal(){
   var bonusObjects = getBonuses()
-  var allScores = [parseInt($("#numberOfDogs").val())]
+  var allScores = [parseInt($("#dogval").val())]
   for(i = 0; i < bonusObjects.length; i++){
     allScores.push(bonusObjects[i].score)
   }
@@ -110,8 +133,25 @@ function getSubtotal(){
   return subtotal
 }
 
+function getTotalScore(){
+  if($("#multival").val() == 0) {
+    return getSubtotal()
+  } else {
+
+  var subtotal = getSubtotal()
+  var multival = $("#multival").val()
+  var uneligibleDogs = $("#dogval").val() - multival
+  var subtotalMinusUneligibleDogs = subtotal - uneligibleDogs
+  return subtotalMinusUneligibleDogs * multival + uneligibleDogs
+  }
+}
+
+function formatTotalScore(){
+  return "<hr><h3>Total Score</h3><p class='subtotal scoreline'>Total Score:" + "<span class='score'>+" + getTotalScore() + "</span></p>"
+}
+
 function formatSubtotal(){
-  return "<hr><h3>Subtotal</h3><div class='subtotal'>" + String(getSubtotal()) + "</div>"
+  return "<p class='subtotal scoreline'>Subtotal:" + "<span class='score'>+" + getSubtotal() + "</span></p>"
 }
 
 function formatAllBonuses(){
@@ -123,9 +163,16 @@ function formatAllBonuses(){
   return results
 }
 
-// base score + bonuses = subtotal * multispot = total (then list caveats)
 
 function displayAllPoints(){
-  var allPointsDisplay = [getBaseScore(), formatAllBonuses(), formatSubtotal()]
+  var allPointsDisplay = [getBaseScore(), formatAllBonuses().join(""), formatSubtotal(), formatMultispot(), formatTotalScore(), formatCaveats()]
   $("#result").html(allPointsDisplay.join(""))
+}
+
+function formatCaveats(){
+  if($("#reverseSpot").is(':checked')){
+    return "<h3>Caveats</h3><p class='scoreline'>Reverse Spot: All Points To Dog</p>"
+  } else if ($("#jackOfSpades").is(':checked')){
+    return "<h3>Caveats</h3><p class='scoreline'>The Illustrious Jack of Spades: Lifetime Points To Dog!</p>"
+  }
 }

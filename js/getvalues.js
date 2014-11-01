@@ -10,6 +10,8 @@ function getAllCheckboxes(){
       checkboxes[$(this).attr('id')] = true
     }
   })
+  delete checkboxes.reverseSpot
+  delete checkboxes.jackOfSpades
   return checkboxes
 }
 
