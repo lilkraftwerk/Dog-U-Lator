@@ -13,6 +13,6 @@ function run(){
     scrollToResults()
     loadingScreen()
     setTimeout(function (){
-             $("#result").html(format.formattedDivs)
+             $("#result").html(format.formattedDivs.join(""))
          }, 2500)
 }

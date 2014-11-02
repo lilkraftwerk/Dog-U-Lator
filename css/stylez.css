@@ -2,15 +2,18 @@
   font-size: 3em;
   text-align: center;
   /*border: 1px solid black;*/
-  font-family: 'Pacifico', cursive;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
   color: black;
-  text-shadow: 2px 2px #4ECDC4;
+  position: relative;
 }
 
 #subtitle {
   margin-top: 7px;
   font-size: 1.5em;
   text-align: center;
+  font-family: 'Pacifico', cursive;
+
 }
 
 h1 {
@@ -19,7 +22,8 @@ h1 {
 }
 
 .calculator {
-  padding-bottom: 40px;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
   background-color: white;
 }
 
@@ -43,7 +47,8 @@ h1 {
 }
 
 .titlebox {
-
+  padding-top: 30px;
+  background-color: white;
 }
 
 label {
@@ -87,8 +92,8 @@ button:hover {
 }
 
 button:active {
-  background-color: red;
-  border: 10px solid black;
+  background-color: white;
+  border: 3px solid black;
 }
 
 .dogNumPicker button.left {
@@ -104,15 +109,70 @@ button:active {
 
 
 html, body {
-font-family: 'Raleway', sans-serif;
-  background-image: url('../img/doglogo.png');
+  font-family: 'Raleway', sans-serif;
+  background-image: url('../img/sativa.png');
   background-color: white;
 
 }
 
+.beta {
+  position: absolute;
+  display: none;
+  top: 20px;
+  right: 5%;
+  height: 50px;
+  font-size: 1em;
+  margin-top: 4px;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: none;
+  background-color: #4ECDC4;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  color: white;
+}
+
+.beta:before, .beta:after {
+  content: "beta!";
+  top: 0;
+  right: 0;
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  background-color: #4ECDC4;
+}
+
+.beta:before {
+  -webkit-transform: rotate(50deg);
+  -moz-transform: rotate(50deg);
+  -ms-transform: rotate(50deg);
+  -o-transform: rotate(50deg);
+}
+.beta:after {
+  -webkit-transform: rotate(20deg);
+  -moz-transform: rotate(20deg);
+  -ms-transform: rotate(20deg);
+  -o-transform: rotate(20deg);
+}
+
+
 #submit {
-margin-bottom: 30px;
-border: 2px solid black;
+  margin: 0 auto;
+  text-transform: uppercase;
+  border: 2px solid black;
+  padding: 5px 20px;
+  width: 90%;
+  border-radius: 5px;
+  outline: none;
+  font-size: 3em;
+  line-height: 1.5em;
+  position: relative;
+  background-color: #4ECDC4;
+  box-shadow: 0 4px #A2DED0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  text-shadow: 2px 2px white;
 }
 
 #resultsrow {
@@ -160,7 +220,7 @@ border: 2px solid black;
 }
 
 #result ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 #loadingimg {
@@ -172,16 +232,32 @@ border: 2px solid black;
 }
 
 .scorebadge {
-    margin: 0 auto;
-    border-radius: 50%;
-    min-width: 80px;
-    min-height: 80px;
-    width: auto;
-    height: auto;
-    padding: 8px;
-    background-color: white;
-    border: 3px solid black;
-    text-align: center;
-    font-size: 40px;
+  margin: 0 auto;
+  border-radius: 50%;
+  min-width: 80px;
+  min-height: 80px;
+  max-width: 240px;
+  height: auto;
+  padding: 8px;
+  background-color: white;
+  border: 3px solid black;
+  text-align: center;
+  font-size: 40px;
 
 }
+
+
+/* Extra small devices (phones, less than 768px) */
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+.beta {
+  display: inline;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) { ... }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { ... }

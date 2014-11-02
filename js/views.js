@@ -33,7 +33,12 @@ function HTMLFormatter(values, calculator){
     this.formattedDivs.push(this.formatBaseDiv())
   }
 
+  this.formatCreativeBonus = function(){
+
+  }
+
   this.createAllBonuses = function(){
+    this.formattedDivs.push(formatCreativeBonus())
     this.formattedDivs.push("<h1>Bonuses</h1>")
     if(this.values.bonuses.length == 0){
       this.formattedDivs.push(this.zeroBonus())
