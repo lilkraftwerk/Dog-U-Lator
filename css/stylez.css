@@ -170,3 +170,18 @@ border: 2px solid black;
 #hiddendog {
   display: none;
 }
+
+.scorebadge {
+    margin: 0 auto;
+    border-radius: 50%;
+    min-width: 80px;
+    min-height: 80px;
+    width: auto;
+    height: auto;
+    padding: 8px;
+    background-color: white;
+    border: 3px solid black;
+    text-align: center;
+    font-size: 40px;
+
+}

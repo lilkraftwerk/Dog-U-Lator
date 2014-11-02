@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $("#submit").on('click', function(e){
     e.preventDefault()
-    submitHit()
+    run()
   })
   $("#dogquantitypicker").children('button').on('click', function(e){
     e.preventDefault()
@@ -38,7 +38,6 @@ function addOrSubtract(button, operation){
 
 function loadingScreen(){
   var message = randomLoadingMessage()
-  console.log(message)
   var htmlForLoading = "<h1>" + message + "</h1>" + "<img class='img-responsive' id='loadingimg' src='img/dogspin.gif'>"
   $("#result").html(htmlForLoading)
 }

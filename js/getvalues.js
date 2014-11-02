@@ -1,41 +1,43 @@
-function getValues(){
-  var values = getAllCheckboxes()
-  return values
-}
+function Values(){
+  this.bonuses = []
+  this.numberOfDogs = 0
+  this.multispotDogs = 0
+  this.creativeBonus = ""
+  this.ineligibleDogs = 0
 
-function getAllCheckboxes(){
-  checkboxes = {}
-  $("input[type='checkbox']").each(function(index){
-    if($(this).is(':checked')){
-      checkboxes[$(this).attr('id')] = true
-    }
-  })
-  delete checkboxes.reverseSpot
-  delete checkboxes.jackOfSpades
-  return checkboxes
-}
-
-function checkForInputValues(){
-  var inputValues = {}
-  var inputs = ["numberOfDogs", "multispotDogs", "creativeBonus"]
-  for(var i = 0; i < inputs.length; i++){
-    if ($("#" + inputs[i]).val() != ""){
-      inputValues[inputs[i]] = true
-    }
+  this.initialize = function(){
+    this.getNumberOfDogs()
+    this.getMultiSpot()
+    this.getCreativeBonus()
+    this.readCheckboxes()
+    this.calculateIneligible()
   }
-  return inputValues
-}
 
-function getNumberOfDogs(){
-  return $("#numberOfDogs").val()
-}
+  this.readCheckboxes = function(){
+    var checked = []
+    $("input[type='checkbox']").each(function(index){
+      if($(this).is(':checked')){
+        var attr = $(this).attr('id')
+        checked.push(new Bonus(attr))
+      }
+    })
+    this.bonuses = checked
+  }
 
-function getMultiSpot(){
-  return $("#multispotDogs").val()
-}
+  this.getNumberOfDogs = function(){
+    this.numberOfDogs = parseInt($("#dogval").val())
+  }
 
-function getCreativeBonus(){
-  if ($("#creativeBonus").val()){
-    return $("#creativeBonus").val()
+  this.getMultiSpot = function(){
+    console.log($("#multival").val())
+    this.multispotDogs = parseInt($("#multival").val())
+  }
+
+  this.getCreativeBonus = function(){
+      this.creativeBonus = $("#creativeBonus").val()
+    }
+
+  this.calculateIneligible = function(){
+    this.ineligibleDogs = this.numberOfDogs - this.multispotDogs
   }
 }
