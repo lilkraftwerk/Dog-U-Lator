@@ -52,7 +52,7 @@ h1 {
 }
 
 label {
-  font-size: 1em;
+  font-size: 1.3em;
 }
 
 .dogNumPicker input {
@@ -261,3 +261,4 @@ html, body {
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { ... }
+

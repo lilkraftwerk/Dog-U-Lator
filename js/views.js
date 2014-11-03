@@ -34,17 +34,23 @@ function HTMLFormatter(values, calculator){
   }
 
   this.formatCreativeBonus = function(){
-
+    if (this.values.creativeBonus != ""){
+      return "<div class='scoreline positive'>Creative Bonus: " + this.values.creativeBonus +
+    "<span class='score'>+1</span></div>"
+    } else {
+      return ""
+    }
   }
 
   this.createAllBonuses = function(){
-    this.formattedDivs.push(formatCreativeBonus())
     this.formattedDivs.push("<h1>Bonuses</h1>")
-    if(this.values.bonuses.length == 0){
+    this.formattedDivs.push(this.formatCreativeBonus())
+    if(this.values.bonuses.length == 0 && this.values.creativeBonus == ""){
       this.formattedDivs.push(this.zeroBonus())
     } else {
       for(i = 0; i < this.values.bonuses.length; i++){
         var thisBonus = this.values.bonuses[i]
+        console.log(thisBonus.positive())
         this.formattedDivs.push(this.formatBonusDiv(thisBonus))
       }
     }
@@ -69,7 +75,7 @@ function HTMLFormatter(values, calculator){
   }
 
   this.formatSubtotal = function(){
-    return "<hr><p class='subtotal scoreline'>Subtotal:" + "<span class='score'>+" + String(this.calculator.subtotal) + "</span></p>"
+    return "<hr><p class='subtotal scoreline'>Subtotal:" + "<span class='score'>" + this.numToPlusOrMinus(this.calculator.subtotal) + String(this.calculator.subtotal) + "</span></p>"
   }
 
   this.createMultispotDiv = function(){
@@ -79,9 +85,13 @@ function HTMLFormatter(values, calculator){
   }
 
   this.formatMultispot = function(){
-    return "<h1>Subtotal + Multispot</h1><p class='subtotal scoreline'>Subtotal of multispot eligible dogs:<span class='score'>" + String(this.calculator.multispotSubtotal) + "</span></p>" +
-  "<p class='subtotal scoreline'>" + String(this.values.multispotDogs) + " eligible dogs<span class='score'>x " + String(this.values.multispotDogs) + "</span></p>" +
-  "<p class='subtotal scoreline'>Points for ineligible dogs<span class='score'>+" + String(this.values.ineligibleDogs) + "</span></p>"
+    return "<h1>Subtotal + Multispot</h1><p class='" + this.numberToPosOrNeg(this.calculator.multispotSubtotal) + " scoreline '>Subtotal of multispot eligible dogs:<span class='score'>" + String(this.calculator.multispotSubtotal) + "</span></p>" +
+
+  "<p class='subtotal scoreline'>" + String(this.values.multispotDogs) + " eligible dogs<span class='score'>x " + String(this.values.multispotDogs) + "</span></p><hr>" +
+
+  "<p class='" + this.numberToPosOrNeg(this.calculator.multispotSubtotal * this.values.multispotDogs) + " scoreline'>Multispot Subtotal: <span class='score'>" + String(this.calculator.multispotSubtotal * this.values.multispotDogs) + "</span></p>" +
+
+  "<p class='positive scoreline'>Plus points for ineligible dogs<span class='score'>+" + String(this.values.ineligibleDogs) + "</span></p>"
   }
 
   this.createTotal = function(){
@@ -94,15 +104,31 @@ function HTMLFormatter(values, calculator){
   }
 
   this.positiveOrNegative = function(bonus){
-    if (bonus.positive) {
+    if (bonus.positive()) {
       return "positive"
     } else {
       return "negative"
     }
   }
 
+  this.numberToPosOrNeg = function(number){
+    if(number >= 1) {
+     return 'positive'
+   } else {
+      return 'negative'
+      }
+  }
+
+  this.numToPlusOrMinus = function(number){
+      if(number >= 1) {
+     return '+'
+   } else {
+    return ""
+      }
+  }
+
   this.returnPlusOrMinus = function(bonus){
-    if (bonus.positive) {
+    if (bonus.positive()) {
       return "+"
     } else {
       return ""
