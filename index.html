@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dog-U-Lator</title>
-
   <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -23,10 +22,11 @@
           <div class="col-xs-0 col-md-3"></div>
 
           <div class="col-xs-12 col-md-6 titlebox">
-                 <div class="beta">beta!</div>
-                 <div id="title">DOG-U-LATOR</div>
-          <p id="subtitle">it's a lifestyle
-            <hr></div>
+           <div class="beta">beta!</div>
+           <div id="title">DOG-U-LATOR</div>
+           <p id="subtitle">it's a lifestyle
+            <hr>
+            </div>
             <div class="col-xs-0 col-md-3"></div>
           </div>
           <div class="row">
@@ -39,26 +39,24 @@
                     <input id="dogval" value="1" placeholder="0" type="number">
                     <br>
                     <button class="left"data-type="subtract">-</button><button class="right" data-type="add">+</button>
-                 </div>
+                  </div>
 
 
-                <div class="col-xs-12">
+                  <div class="col-xs-12">
                     <h3 class="pickerlabel">Dogs Eligible For Multispot</h3>
-                  <div id="multispotpicker" class="dogNumPicker">
-                    <input id="multival" placeholder="0" type="number">
-                    <br>
-                    <button class="left" data-type="subtract">-</button><button class="right" data-type="add">+</button>
-                 </div>
-                </div>
-                <div class="col-xs-12">
-                  <div class="form-group">
-
-                    <h3 class="pickerlabel">Creative Bonus</h3>
-
-                    <input type="text" class="form-control" id="creativeBonus" placeholder="example: Furry Ears">
+                    <div id="multispotpicker" class="dogNumPicker">
+                      <input id="multival" value="0" placeholder="0" type="number">
+                      <br>
+                      <button class="left" data-type="subtract">-</button><button class="right" data-type="add">+</button>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <div class="form-group">
+                      <h3 class="pickerlabel">Creative Bonus</h3>
+                      <input type="text" class="form-control" id="creativeBonus" placeholder="example: Furry Ears">
+                    </div>
                   </div>
                 </div>
-              </div>
 
                 <h1>Spot Bonuses</h1>
                 <div class="col-xs-6 col-sm-4">
@@ -88,19 +86,17 @@
 
               <h1>Shameful Appearance</h1>
               <div class="row">
-                <div class="col-xs-6">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" id="shamefulAppearance">Shameful Appearance (-2)
-                    </label>
-                  </div>
-                </div>
-                <div class="col-xs-6">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" id="caligula">Caligula Spot (-3)
-                    </label>
-                  </div>
+                <div class="col-xs-12 form-inline" data-toggle="buttons">
+
+                  <label class="btn btn-block btn-default active">
+                    <input type="radio" name="shamefulGroup" id="noShameful" autocomplete="off" checked> No Shameful Appearance Bonus
+                  </label>
+                  <label class="btn btn-block btn-default">
+                    <input type="radio" name="shamefulGroup" id="shamefulAppearance" autocomplete="off"> Shameful Appearance (-2)
+                  </label>
+                  <label class="btn btn-block btn-default">
+                    <input type="radio" name="shamefulGroup" id="caligulaSpot" autocomplete="off"> Caligula Spot (-3)
+                  </label>
                 </div>
               </div>
 
@@ -109,20 +105,19 @@
 
               <h1>Long Paw of The Law</h1>
               <div class="row">
-                <div class="col-xs-6">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" id="criminalBehavior">Criminal Behavior (+1)
+                <div class="col-xs-12">
+                  <div class="col-xs-12 form-inline" data-toggle="buttons">
+
+                    <label class="btn btn-block btn-default active">
+                      <input type="radio" name="criminalPooch" id="noCriminal" autocomplete="off" checked> No Criminal Behavior Bonus
+                    </label>
+                    <label class="btn btn-block btn-default">
+                      <input type="radio" name="criminalPooch" id="criminalBehavior" autocomplete="off"> Criminal Behavior (+1)
+                    </label>
+                    <label class="btn btn-block btn-default">
+                      <input type="radio" name="criminalPooch" id="destroyingProperty" autocomplete="off"> Destroying Human Property (+2)
                     </label>
                   </div>
-                </div>
-                <div class="col-xs-6">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" id="destroyingProperty">Destroying Human Property (+2)
-                    </label>
-                  </div>
-                </div>
                 <div class="col-xs-12">
                  <div class="checkbox">
                    <label>
@@ -131,119 +126,115 @@
                  </div>
                </div>
              </div>
-
-
-             <h1>Distance</h1>
-             <div class="row">
-              <div class="col-xs-6">
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" id="tooClose">Too Close (-1)
-                  </label>
-                </div>
-              </div>
-              <div class="col-xs-6">
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" id="goodDistance">Good Distance (+1)
-                  </label>
-                </div>
-              </div>
-              <div class="col-xs-12">
-               <div class="checkbox">
-                 <label>
-                   <input type="checkbox" id="extremeDistance">Extreme Distance! (+2)
-                 </label>
-               </div>
-             </div>
            </div>
 
 
-           <h1>Dog Attributes</h1>
+           <h1>Distance</h1>
            <div class="row">
-             <div class="col-xs-6">
-               <div class="checkbox">
-                 <label>
-                   <input type="checkbox" id="extremeLounging">Extreme Lounging (+1)
-                 </label>
-               </div>
-             </div>
-             <div class="col-xs-6">
-               <div class="checkbox">
-                 <label>
-                   <input type="checkbox" id="actionDog">Action Dog (+1)
-                 </label>
-               </div>
-             </div>
-             <div class="col-xs-6">
-               <div class="checkbox">
-                 <label>
-                   <input type="checkbox" id="curiousEater">Curious Eater (+2)
-                 </label>
-               </div>
-             </div>
-             <div class="col-xs-6">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" id="missingComponent">Missing Component (+3)
-                </label>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" id="ronin">Dog Carrying Its Own Leash / 浪人 (+1)
-                </label>
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" id="heroDog">Hero Dog (+25)
-                </label>
-              </div>
-            </div>
+            <div class="col-xs-12">
+              <div class="col-xs-12 form-inline" data-toggle="buttons">
 
-            <div class="col-xs-6">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" id="honorDog">Honored Dog (+25)
+                <label class="btn btn-block btn-default active">
+                  <input type="radio" name="distanceBonus" id="noDistanceBonus" autocomplete="off" checked> No Distance Bonus
+                </label>
+                <label class="btn btn-block btn-default">
+                  <input type="radio" name="distanceBonus" id="tooClose" autocomplete="off"> Too Close (-1)
+                </label>
+                <label class="btn btn-block btn-default">
+                  <input type="radio" name="distanceBonus" id="goodDistance" autocomplete="off"> Good Distance (+1)
+                </label>
+                <label class="btn btn-block btn-default">
+                  <input type="radio" name="distanceBonus" id="extremeDistance" autocomplete="off"> Extreme Distance! (+2)
                 </label>
               </div>
             </div>
           </div>
 
-          <h1>Spotted?</h1>
+          <h1>Dog Attributes</h1>
           <div class="row">
-            <div class="col-xs-6">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" id="reverseSpot">Reverse Spot (All Points To Dog)
-                </label>
-              </div>
+           <div class="col-xs-12 col-md-6">
+             <div class="checkbox">
+               <label>
+                 <input type="checkbox" id="extremeLounging">Extreme Lounging (+1)
+               </label>
+             </div>
+           </div>
+           <div class="col-xs-12 col-md-6">
+             <div class="checkbox">
+               <label>
+                 <input type="checkbox" id="actionDog">Action Dog (+1)
+               </label>
+             </div>
+           </div>
+           <div class="col-xs-12 col-md-6">
+             <div class="checkbox">
+               <label>
+                 <input type="checkbox" id="curiousEater">Curious Eater (+2)
+               </label>
+             </div>
+           </div>
+           <div class="col-xs-12 col-md-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="missingComponent">Missing Component (+3)
+              </label>
             </div>
-            <div class="col-xs-6">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" id="jackOfSpades">Premium Reverse Spot: "The Jack Of Spades" (Dog Gets All Of Your Points)
-                </label>
-              </div>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="ronin">Dog Carrying Its Own Leash / 浪人 (+1)
+              </label>
             </div>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="heroDog">Hero Dog (+25)
+              </label>
+            </div>
+          </div>
 
+          <div class="col-xs-12 col-md-6">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="honorDog">Honored Dog (+25)
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <h1>Spotted?</h1>
+        <div class="row">
           <div class="col-xs-12">
+            <div class="col-xs-12 form-inline" data-toggle="buttons">
+              <label class="btn btn-block btn-default active">
+                <input type="radio" name="spotted" id="notSpotted" autocomplete="off" checked> Not Spotted
+              </label>
+              <label class="btn btn-block btn-default">
+                <input type="radio" name="spotted" id="spottedByDog" autocomplete="off"> Spotted By Dog (All Points To Dog)
+              </label>
+              <label class="btn btn-block btn-default">
+                <input type="radio" name="spotted" id="jackOfSpades" autocomplete="off"> Jack Of Spades (Lifetime Points To Dog)
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
           <hr>
-            <button type="submit" id="submit" class="btn btn-default btn-block">DOG-U-LATE</button>
-          </div>
-          </div>
-        </form>
+          <button type="submit" id="submit" class="btn btn-default btn-block">DOG-U-LATE</button>
+        </div>
       </div>
-    </div>
-    <div class="row" id="resultsrow">
-          <div class="col-xs-0 col-md-3"></div>
-          <div class="col-xs-12 col-md-6" id="result"></div>
-          <div class="col-xs-0 col-md-3"></div>
-    </div>
+    </form>
   </div>
+</div>
+<div class="row" id="resultsrow">
+  <div class="col-xs-0 col-md-3"></div>
+  <div class="col-xs-12 col-md-6" id="result"></div>
+  <div class="col-xs-0 col-md-3"></div>
+</div>
+</div>
 </div>
 <img src="img/dogspin.gif" id="hiddendog">
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

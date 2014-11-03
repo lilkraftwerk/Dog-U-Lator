@@ -5,6 +5,7 @@ function run(){
   calc.everything();
   var format = new HTMLFormatter(values, calc);
   format.formatAllDivs();
+
   $("#resultsrow").show()
     scrollToResults()
     loadingScreen()
